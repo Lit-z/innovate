@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Water+Brush&display=swap');
+/* font-family: 'Water Brush', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada&family=Water+Brush&display=swap');
+/* font-family: 'Radio Canada', sans-serif; */
+
+* {
+    background-color: rgba(247, 230, 247, 0.692);
+    font-family: 'Radio Canada', sans-serif;
+}
+
+body {
+    color: black;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+.lorem {
+    background-color:whitesmoke;
+    color: firebrick;
+    font-family: 'Water Brush',cursive;
+    text-align: center;
+}
+
+#navbar {
+    background-color: grey;
+    font-size: 20px;
+    color: violet;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+img {
+    margin-left: 35%;
+    margin-right: 35%;
+    width: 30%;
+}
+
+footer {
+    color: crimson;
+}
+
+#navbar a:visited {
+    color: violet;
+}
+
+footer a:visited {
+    color: red;
+}
+
+#navbar a:hover, footer a:hover {
+    color: gold;
+}
+
