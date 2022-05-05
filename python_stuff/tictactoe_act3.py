@@ -1,6 +1,7 @@
 import random
 
-# starting menu where user picks a side 
+# starting menu where user picks a side covering multiple input errors or ways
+# choosing a side
 def start():
     global marker, ai_marker
     x = input('Pick a side: O or X (noughts or crosses) \n')
@@ -18,23 +19,29 @@ def start():
         start()
     return marker, ai_marker
 
-# user picks if they wish to go first or second
+# user picks if they wish to go first, second or let the ai decide (random)
+# covering multiple inputs
 def turn():
     global player
-    y= input('Do you wish to go first? (Y/N)').lower()
-    if y == 'yes' or y == 'y' or y == '1st' or y == 'first' or y == '1':
-        player = True
-        print('You will go first')
-    elif y == 'no' or y == 'n' or y == '2nd' or y == 'second' or y == '2':
-        player = False
-        print('You will go second')
+    y= input('Do you wish to go first, second or random (1, 2 or r)? ').lower()
+    if y == 'r' or y == 'rand' or y == 'random':
+        y = random.randint(1,2)
     else:
-        print('Enter a correct value')
+        pass
+    if y == '1st' or y == 'first' or y == '1' or y == 1:
+        player = True
+        print('\nYou will go first')
+    elif y == '2nd' or y == 'second' or y == '2' or y == 2:
+        player = False
+        print('\nYou will go second')
+    else:
+        print('Please enter a correct value')
         turn()
     return player
 
 # prints out visually the starting board and names (numbers) of the locations
-# on the board, will be callable as a help menu
+# the input line gives this menu a pause so it gives the user chance to read it
+# especially helpful when the ai is going first
 def help(x,y):
     j = 1
     k = 2
@@ -48,9 +55,12 @@ def help(x,y):
         j += 3
         k += 3
         l += 3
-    print('positions for selection are represented by the above layout')
+    print('Positions for selection are represented by the above layout')
+    input('Press Enter to continue')
 
-# the players turn
+# the players turn with checks to ensure the position entered is valid
+# and unoccupied, then it checks after the move if it would result in a win
+# or draw, if so the game will end
 def user_turn():
     move = 0
     move = input('Choose a position: ')
@@ -73,29 +83,39 @@ def user_turn():
         print("That's impossible position try a actual move")
         user_turn()
 
-# calculates the ai turn, currently just picks corners, mid then rest randomly
-# if they are empty, need to add to it to check if it can win/ lose next go
+# calculates the ai turn, prior_move() is related to moves that result in a side
+# winning, so it runs them checks first. Then it will pick randomly from the 
+# corners, centre, remaining 4 spots in that order if these spots are empty
+# if the ai plays a winning or the last (drawing) move the game will end
 def ai_turn(m):
     moves = []
     copy = copy_board(b)
-    for i in ([0, 2, 6, 8]):
-        if copy[i] != ' ':
-            pass
+    prior_move(copy, ai_marker, b)
+    if places != []:
+        moves = places
+    else:
+        copy = copy_board(b)
+        prior_move(copy, marker, b)
+        if places != []:
+            moves = places
         else:
-            moves.append(i)
-    if len(moves) == 0 and copy[4] == ' ':
-        moves.append(4)
-    else:
-        pass
-    if len(moves) == 0:
-        for j in ([1, 3, 5, 7]):
-            if copy[j] != ' ':
-                pass
+            for i in ([0, 2, 6, 8]):
+                if copy[i] != ' ':
+                    pass
+                else:
+                    moves.append(i)
+            if len(moves) == 0 and copy[4] == ' ':
+                moves.append(4)
             else:
-                moves.append(j)
-    else:
-        pass
-    print(moves)
+                pass
+            if len(moves) == 0:
+                for j in ([1, 3, 5, 7]):
+                    if copy[j] != ' ':
+                        pass
+                    else:
+                        moves.append(j)
+            else:
+                pass
     ai_move = random.choice(moves)
     b[ai_move] = m
     check_win(b, m)
@@ -104,15 +124,37 @@ def ai_turn(m):
     else:
         check_draw()
 
+# the prior_move() first checks for if the ai can make a move that will win,
+# if it finds out it returns this value to ai_turn()
+# then it checks if there are any moves it can play to prevent a loss in the 
+# next turn and again returns this value to ai_turn()
+# if neither, it will go back to ai_turn where the random checks explained there
+# are completed
+def prior_move(copy, mark, board):
+    global game_over, places
+    places = []
+    for i in range(0,9):
+        if copy[i] == ' ':
+            copy[i] = mark
+            check_win(copy, mark)
+            if game_over == True:
+                places.append(i)
+                game_over = False
+                return game_over, places
+            else:
+                copy = copy_board(board)
+        else:
+            pass
+
 # making a duplicate board for the ai to figure out it's move that
-# won't modify the current board
+# won't modify the current board, gets used a lot in calculating priority moves
 def copy_board(b):
     dupe_b = []
     for k in b:
         dupe_b.append(k)
     return dupe_b
 
-# displays the current board
+# displays the current board with positions filled in, is shown after every turn
 def current_board(x,y):
     print(f'{x} {b[0]} | {b[1]} | {b[2]} \n{x+y}')
     print(f'{x} {b[3]} | {b[4]} | {b[5]} \n{x+y}')
@@ -145,16 +187,19 @@ def check_win(b, m):
     else:
         pass
 
-# some needed variables set to defaults
+# variables set to defaults
 game_over = False
 b = [' '] * 9                       # b shorthand for board to minimise typing
-x = '   |   |   \n'
-y = '-----------'
+x = '   |   |   \n'                 # used in making the picture of the board
+y = '-----------'                   # likewise
+
+# starts the game doing initial checks of what the user wants in terms of turn
+# order or side picked, then displays the positions on the board
 start()
 turn()
 help(x,y)
 
-# run the game
+# runs the game accounting for the different order depending on who goes first
 while game_over == False:
     if player == True:
         user_turn()
@@ -172,7 +217,3 @@ while game_over == False:
             current_board(x,y)
         else:
             break
-
-
-
-
