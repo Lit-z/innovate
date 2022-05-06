@@ -28,23 +28,35 @@ h2 {
 }
 
 #navbar {
-    background-color: grey;
+    background-color:black;
     font-size: 20px;
     color: violet;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
+    height: 40px;
     width: 100%;
 }
 
-img {
-    margin-left: 35%;
-    margin-right: 35%;
-    width: 30%;
+#image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+a:link {
+    text-decoration: none;
 }
 
 footer {
     color: crimson;
+}
+
+#navbar a{
+    background-color: black;
+    text-decoration: none;
 }
 
 #navbar a:visited {
@@ -56,6 +68,7 @@ footer a:visited {
 }
 
 #navbar a:hover, footer a:hover {
+    text-decoration: none;
     color: gold;
 }
 
