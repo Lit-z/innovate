@@ -64,7 +64,7 @@ def help(x,y):
 def user_turn():
     move = 0
     move = input('Choose a position: ')
-    while move.isdigit() == False: 
+    while not move.isdigit(): 
         move = input('Enter an correct position (1-9): ')
     move = int(move)
     if 1 <= move <= 9:
