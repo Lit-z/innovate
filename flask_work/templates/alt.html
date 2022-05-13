@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>alt page</h1>
+{{ space }}
+{% if space[1] == 'item1' %}
+    <p>It's secret data</p>
+{% else %}
+    <p>Why this</p>
+{% endif %}
+
+{% for x in space %}
+<h4>{{ x }}</h4><button type="reset">remove</button>
+{% endfor %}
+
+
+<form action="/alt" method="POST">
+    <input type="text" name="add_item" id="add_form" placeholder="Enter extra item">
+    <button type="submit" style="display: none;">Submit</button>
+</form>
+
+<!-- style="display:none;" allows for enter to submit -->
+{% endblock %}

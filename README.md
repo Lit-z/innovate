@@ -1,0 +1,1 @@
+Work completed during time spent with Code Nation (Python, CSS, HTML, Flask, Javascript)

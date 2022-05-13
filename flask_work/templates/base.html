@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title></title>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="{{url_for('my_view.home')}}" >>Home</a>
+        <a href="{{url_for('my_view.contact')}}" >Contact</a>
+        <a href="{{url_for('my_view.alt')}}">Alt</a>
+    </nav>
+    <header>It's near to the top</header>
+
+    {% block content %}
+
+
+    {% endblock %}
+
+    <footer>Go up</footer>
+    <!-- <aside>This has extended from base</aside> -->
+</body>
+</html>

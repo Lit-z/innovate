@@ -1,0 +1,71 @@
+/* for bootstrap navbar in boot.html, important required to overrule important
+in bootstrap, that or using id rather than class as usual css order isn't applied */
+.bg-light{
+    background-color: violet !important;
+}
+
+/* for button.html */
+.button1{
+    background-color: lightblue;
+    padding: 15px;
+    border:2px solid red;
+}
+
+.button2{
+    background-color: lightblue;
+    padding: 15px;
+    border:2px solid red;
+    transition-duration: 0.5s;
+}
+
+.button2:hover{
+    background-color: rgb(93, 135, 93);
+    color: white;
+    border:2px solid black;
+}
+
+.button3{
+    background-color: lightblue;
+    padding: 15px;
+    border:2px solid red;
+    transition-duration: 0.5s;
+    box-shadow: 2px 2px grey;
+}
+
+.button3:hover{
+    background-color: rgb(93, 135, 93);
+    color: white;
+    border:2px solid black;
+    cursor: pointer;
+}
+
+.button3:active{
+    transform: translatey(3px);
+    box-shadow: 2px 1px grey;
+}
+
+.button4{
+    background-color: red;
+    padding: 15px;
+    border: 2px solid black;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.button4:active{
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
