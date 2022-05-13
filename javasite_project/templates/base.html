@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='navbar.css')}}"> -->
+<!-- second style sheet contains only elements related to added navbar without 
+    modifying the main.css file, it can be uncommented for better visual clarity
+    of the links. In practice something similar to these lines would be added to
+    the main.css file depending on the exact style the frontend dev wants-->
+    <script src="{{url_for('static', filename='app.js')}}"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events</title>
+</head>
+<!-- fixed the location of the css/ js links -->
+
+<body onload="darkCheck(), checkCookies()">
+    <header>
+    <nav id="navbar">
+        <a href="{{url_for('my_view.home')}}" >Home</a>
+        <a href="{{url_for('my_view.page1')}}" >Page 1</a>
+        <a href="{{url_for('my_view.page2')}}">Page 2</a>
+        <a href="{{url_for('my_view.page3')}}" >Page 3</a>
+        <a href="{{url_for('my_view.page4')}}" >Page 4</a>
+        <a href="{{url_for('my_view.page5')}}">Activities</a>
+    </nav>
+    </header>
+<!-- created a navbar in the header that'll appear across all pages -->
+
+{% block title %}
+{% endblock %}
+<!-- this section of block uses the information contained in the title
+    block, in the same way as the more detailed comment below -->
+
+<div class="flex-container-h">
+    <button onclick="darkMode()" id="mode-button"></button>
+</div>
+<!-- dark mode button -->
+
+{% block content %}
+{% endblock %}
+<!-- this section of block will bring in all the information contained between 
+    the block content on the respective html pages. For example home (or /)
+    this will include the content from the home.html contained between two 
+    named {}'s (same block/endblock naming convention as above).-->
+
+</body>
+</html>

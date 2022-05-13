@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+
+{% block title %}
+<div><h1>You broke the system by trying to go to places that don't exist.</h1></div>
+{% endblock %}
+{% block content %} 
+<h2>  
+    <img src="{{url_for('static', filename='images/404_img.jpg')}}", alt="404 error UFO"
+    , title="I'm sure the page was around here somewhere" >
+</h2> 
+<br>
+<div><h2> {{e}} </h2></div>
+{% endblock %}
+
+<!-- the page users get if they enter an incorrect url on the domain the image 
+    can be changed or removed to suit the front end dev needs,it just highlights 
+    how to reference them (true for any page) the {{ e }} variable is for the 
+    producing the standard 404 error output-->

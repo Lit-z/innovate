@@ -1,0 +1,24 @@
+/* this first part affects the added navbar for visual clarity and fitting the
+style of the page as it directly refers to id=navbar and changes nothing else, 
+this doesn't run unless uncommented in the html */
+
+#navbar {
+    color: #fff;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: gilroyLight;
+}
+
+#navbar a:link {
+    text-decoration: none;
+}
+
+#navbar a:visited {
+    color: #fff;
+}
+
+#navbar a:hover{
+    color: rgba(245, 179, 47, 1);
+}
