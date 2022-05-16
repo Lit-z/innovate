@@ -1,0 +1,38 @@
+h1, h2 {
+    font-size:36px;
+}
+
+/* just to make the dark/ light mode text stand out more */
+h3 {
+    font-size: 30px;
+}
+
+.desktop, .mobile{
+    display: none;
+}
+
+/* if portrait layout, likely mobile the following applies */
+@media (orientation: portrait) {
+    /* darker mode */
+    body {
+        color: rgb(248, 233, 233);
+        background-color: rgb(1, 1, 87);
+    }
+
+    .mobile {
+        display: inline-block;
+    }
+}
+
+/* if landscape layout, likely desktop the following applies  */
+@media (orientation: landscape) {
+    /* lighter mode */
+    body {
+        color: black;
+        background-color: rgb(177, 227, 242);
+    }
+
+    .desktop {
+        display: inline-block;
+    }
+}

@@ -1,0 +1,85 @@
+@import "rules";
+/* takes the setup from rules.scss */
+/* elements */
+body {
+  background-color: #465362;
+  margin: 0px;
+}
+
+/* include uses heading from the rules.scss file */
+h1 {
+  @include heading(rgb(217, 14, 34));
+}
+
+h3 {
+  @include heading(rgb(238, 13, 238));
+  font-size: 2em;
+}
+
+button {
+  background-color: $mainAccent;
+  color: #eccee7;
+  border: $secondaryAccent 2px solid;
+  padding: 15px;
+}
+
+button:hover {
+  background-color: $secondaryAccent;
+  color: #eccee7;
+  border: $mainAccent 2px solid;
+  padding: 15px;
+}
+
+/* nested groups */
+nav {
+  padding: 1% 0% 1% 0%;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #f9dc5c;
+  margin-bottom: 1%;
+
+  a {
+    font-weight: 700;
+    color: $secondaryAccent;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $mainAccent;
+    text-decoration: none;
+  }
+}
+
+/* classes */
+.content {
+  font-family: $contentfont;
+  color: #011936;
+  font-size: 1.1em;
+  width: 70%;
+  border-top: #f9dc5c 10px solid;
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f0f0f0;
+  padding: 0px 10px 0px 10px;
+}
+
+.inner {
+  font-family: $contentfont;
+  color: #011936;
+  font-size: 1.1em;
+  width: 60%;
+  background-color: #eccee7;
+  border-top: $mainAccent 10px solid;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding: 1%;
+}
+
+/* using extend to copy settings from a previous section (.inner) */
+.inner2 {
+  @extend .inner;
+  border-bottom: $secondaryAccent 10px solid;
+}

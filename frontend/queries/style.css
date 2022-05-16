@@ -1,0 +1,42 @@
+/* alternative way of accessing @media */
+/* @media (max-widhth:500px) {
+    body {
+        color:blue;
+    }
+} */
+
+.desktop, .mobile{
+    display: none;
+}
+
+/* if portrait layout, likely mobile the following applies */
+@media (orientation: portrait) {
+    /* title has effects */
+    .title {
+        color:yellow;
+        background-color: black;
+        text-align: center;
+        padding: 5px;
+        font-size: 2em;
+    }
+
+    .mobile {
+        display: inline-block;
+    }
+}
+
+/* if landscape layout, likely desktop the following applies  */
+@media (orientation: landscape) {
+    /* subtitle has effects */
+    .subtitle {
+        color: green;
+        background-color: orange;
+        text-align: center;
+        padding: 5%;
+        font-size: 4em;
+    }
+
+    .desktop {
+        display: inline-block;
+    }
+}

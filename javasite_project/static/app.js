@@ -24,6 +24,7 @@ function mOut(obj) {
     obj.innerHTML = "";
 }
 
+
 function sendAlert() {
     alert(location.hostname);
 }
